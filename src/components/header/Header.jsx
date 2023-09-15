@@ -14,7 +14,7 @@ const Header = () => {
                 <div className="flex gap-4">
                     
                     <Link to='/' className="navHome" id="lws-home"> Home </Link>
-                    <Link to='/' className="navCart" id="lws-cart">
+                    <Link to='/cart' className="navCart" id="lws-cart">
                         <BiSolidShoppingBag className=' text-xl' />
                         <span id="lws-totalCart">0</span>
                     </Link>
