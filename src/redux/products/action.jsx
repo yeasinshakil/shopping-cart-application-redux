@@ -1,4 +1,4 @@
-import { PRODUCT_ADDED } from "./actionType";
+import { ADD_MANY_QUANTITY, ADD_PRODUCT_QUANTITY, PRODUCT_ADDED, REMOVE_PRODUCT_QUANTITY } from "./actionType";
 
 
 const addProduct = (value) => {
@@ -8,5 +8,24 @@ const addProduct = (value) => {
     }
 }
 
+const addProductQuantity = (product) => {
+    return {
+        type: ADD_PRODUCT_QUANTITY,
+        payload: product
+    }
+}
+const removeProductQuantity = (productId) => {
+    return {
+        type: REMOVE_PRODUCT_QUANTITY,
+        payload: productId
+    }
+}
+const addManyQuantity = (productId) => {
+    return {
+        type: ADD_MANY_QUANTITY,
+        payload: productId
+    }
+}
 
-export {addProduct}
+
+export { addProduct, addProductQuantity, removeProductQuantity, addManyQuantity }
