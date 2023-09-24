@@ -29,7 +29,7 @@ const ProductItem = ({ product }) => {
                     <p className="productQuantity">QTY <span className="lws-quantity">{product.lws_inputQuantity
                     }</span></p>
                 </div>
-                <button className="lws-btnAddToCart" onClick={handleAddCart}>Add To Cart</button>
+                <button className="lws-btnAddToCart" disabled={product.lws_inputQuantity <= 0} onClick={handleAddCart}>Add To Cart</button>
             </div>
         </div>
     );

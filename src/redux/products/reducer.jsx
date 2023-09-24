@@ -27,11 +27,12 @@ const reducer = (state = initialState, action) => {
             if (action.payload < 0) {
                 return state;
             } else {
-                return [...state.map((item) => item.id === action.payload ? { ...item, lws_inputQuantity: item.lws_inputQuantity - 1 } : item)]
+                return [...state.map((item) => item.id === action.payload ? { ...item, lws_inputQuantity: item.lws_inputQuantity >0 && item.lws_inputQuantity - 1} : item)]
             }
 
         case ADD_MANY_QUANTITY:
-            return [...state.map(item => item.id === action.payload ? { ...item, lws_inputQuantity: item.lws_inputQuantity + action.payload.cartQuantity } : item)]
+            return [...state.map(item => item.id === action.payload.id ? { ...item, lws_inputQuantity: item.lws_inputQuantity + action.payload.cartQuantity } : item)]
+
         default:
             return state
     }
