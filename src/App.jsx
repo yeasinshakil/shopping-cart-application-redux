@@ -7,20 +7,21 @@ import Cart from './components/cart/Cart'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
+
 function App() {
 
   return (
     <>
-      <Provider store={store}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Provider store={store}>
           <Header />
           <Routes>
             <Route path='/' element={<Products />}></Route>
             <Route path='/cart' element={<Cart />}></Route>
           </Routes>
+        </Provider>
+      </BrowserRouter>
 
-        </BrowserRouter>
-      </Provider>
     </>
   )
 }

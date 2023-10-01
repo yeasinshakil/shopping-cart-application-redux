@@ -3,18 +3,19 @@ import CartItem from './CartItem';
 import { useSelector } from 'react-redux';
 
 const Cart = () => {
-    const initialCartState = useSelector(state => state.cartReducer)
-    const totalPrice = initialCartState.reduce((total, item)=> (item.lws_inputPrice * item.cartQuantity) + total, 0)
+    const cartState = useSelector(state => state.cartReducer)
+    const totalPrice = cartState.reduce((total, item)=> (item.cartQuantity * item.lws_inputPrice)+ total, 0)
+   
+
     return (
         <main className="py-16">
             <div className="container 2xl:px-8 px-2 mx-auto">
                 <h2 className="mb-8 text-xl font-bold">Shopping Cart</h2>
                 <div className="cartListContainer">
                     {/* Cart Products */}
-                    {initialCartState.map((item, index) => (
+                    {cartState.length > 0 ? cartState.map((item) => (<CartItem product={item} />)) : 'No item added to cart'}
 
-                        <CartItem cart={item} key={index} />
-                    ))}
+
 
                     {/* <!-- Bill Details --> */}
                     <div>

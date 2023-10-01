@@ -1,9 +1,9 @@
 import { ADD_CART, DECREASE_FROM_CART, DELETE_FROM_CART } from "./actionType"
 
-const addToCart = (value) => {
+const addToCart = (product) => {
     return {
         type: ADD_CART,
-        payload: value,
+        payload: product,
     }
 }
 const decreaseFromCart = (product) => {

@@ -1,35 +1,28 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cart/action';
+import { removeProductQuantity } from '../../redux/products/action';
 
 const ProductItem = ({ product }) => {
-    // const [quantity, setQuantity] = useState(parseFloat(product.lws_inputQuantity))
-    const dispatch = useDispatch()
+    const { id, lws_inputImage, lws_inputName, lws_inputCategory, lws_inputPrice, lws_inputQuantity } = product;
+    const dispatch = useDispatch();
 
-
-    const handleAddCart = () => {
-
+    const handleAddToCart = () => {
+        console.log('product add to cart')
         dispatch(addToCart(product))
-        
-        console.log('product added to cart========>>>>');
+        // dispatch(removeProductQuantity(id))
     }
-
-
     return (
         <div className="lws-productCard">
-            <img className="lws-productImage" src={product.lws_inputImage} alt="product" />
+            <img className="lws-productImage" src={lws_inputImage} alt="product" />
             <div className="p-4 space-y-2">
-                <h4 className="lws-productName">{product.lws_inputName
-                }</h4>
-                <p className="lws-productCategory">{product.lws_inputCategory
-                }</p>
+                <h4 className="lws-productName">{lws_inputName}</h4>
+                <p className="lws-productCategory">{lws_inputCategory}</p>
                 <div className="flex items-center justify-between pb-2">
-                    <p className="productPrice">BDT <span className="lws-price">{product.lws_inputPrice
-                    }</span></p>
-                    <p className="productQuantity">QTY <span className="lws-quantity">{product.lws_inputQuantity
-                    }</span></p>
+                    <p className="productPrice">BDT <span className="lws-price">{lws_inputPrice}</span></p>
+                    <p className="productQuantity">QTY <span className="lws-quantity">{lws_inputQuantity}</span></p>
                 </div>
-                <button className="lws-btnAddToCart" disabled={product.lws_inputQuantity <= 0} onClick={handleAddCart}>Add To Cart</button>
+                <button className="lws-btnAddToCart" onClick={handleAddToCart} disabled={lws_inputQuantity <= 0}>Add To Cart</button>
             </div>
         </div>
     );
